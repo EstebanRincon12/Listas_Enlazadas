@@ -82,6 +82,10 @@ LinkedList.prototype.print = function(){
 }
 
 list = new LinkedList();
+list.append("Esteban");
+list.append("Tania");
+list.append("Santiago");
+list.print();
 var counter = list.length();
 
 function obtenerDatos(){
@@ -89,19 +93,39 @@ function obtenerDatos(){
   list.append(text);
   console.log(list.length());
   list.print();
+
+}
+
+function agregarListaDpz(){
+   var text = document.getElementById("data").value;
+   select = document.getElementById("Desplegable");
+   var opt = document.createElement('option');
+   opt.value = text;
+     opt.innerHTML = text;
+     select.appendChild(opt);
+     document.getElementById("data").value = " ";
+}
+
+function eliminarDeListaDpz(){
+   select = document.getElementById("Desplegable");
+   optn = select.value;
+   for (var i=0; i<select.length; i++) {
+      if (select.options[i].value == optn)
+         select.remove(i);
+    }
 }
 
 function Funciono(id){
   var id = document.getElementById(id);
   var selected = id.value;
+  list.removeNode(selected);
+  list.print();
   console.log(selected);
   escribe = document.getElementById("texto");
   escribe.innerHTML = selected;
 }
 
-list.append("Esteban");
-list.append("Tania");
-list.append("Santiago");
+
 console.log(list.findNode("Esteban"));
 console.log(list.length());
 
